@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>使用 CentOS 搭建 Minecraft 服务器（已失败） - windowBR的博客</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="为什么失败了还要把博客发出来：虽然由于服务器性能过低导致失败，但本文依旧有大量可供参考的内容，我边搭服务器边写的博客，在我失败的时候已经写了这么多了我不舍得直接丢掉背景本着学习新知识的想法，本人通过教育认证的方式白嫖到了 Azure 的一台 Linux 服务器，并安装了 CentOS，但由于本人并不懂 Linux 的相关操作，因此服务器至今吃灰（ 因此，由于本人一直是 Minecraft 忠实玩家">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 CentOS 搭建 Minecraft 服务器（已失败）">
+<meta property="og:url" content="http://blog.windowbr.top/2022/11/18/MinecraftSever/index.html">
+<meta property="og:site_name" content="windowBR的博客">
+<meta property="og:description" content="为什么失败了还要把博客发出来：虽然由于服务器性能过低导致失败，但本文依旧有大量可供参考的内容，我边搭服务器边写的博客，在我失败的时候已经写了这么多了我不舍得直接丢掉背景本着学习新知识的想法，本人通过教育认证的方式白嫖到了 Azure 的一台 Linux 服务器，并安装了 CentOS，但由于本人并不懂 Linux 的相关操作，因此服务器至今吃灰（ 因此，由于本人一直是 Minecraft 忠实玩家">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picture-1301348863.cos.ap-nanjing.myqcloud.com/VSC_profile.png">
+<meta property="og:image" content="https://picture-1301348863.cos.ap-nanjing.myqcloud.com/MC_Launcher_sever.png">
+<meta property="og:image" content="https://picture-1301348863.cos.ap-nanjing.myqcloud.com/MC_server_Done.png">
+<meta property="og:image" content="https://picture-1301348863.cos.ap-nanjing.myqcloud.com/server_killed.png">
+<meta property="article:published_time" content="2022-11-18T12:47:08.000Z">
+<meta property="article:modified_time" content="2022-11-18T14:47:54.299Z">
+<meta property="article:author" content="windowBR">
+<meta property="article:tag" content="Minecraft">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picture-1301348863.cos.ap-nanjing.myqcloud.com/VSC_profile.png">
+    
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1668782890885">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1668782890885">
+
+    
+        
+            <link rel="stylesheet" href="/custom.css?v=1668782890885">
+        
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://picture-1301348863.cos.ap-nanjing.myqcloud.com/_title_base4.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="windowBR" class="mdui-btn mdui-btn-icon"><img src="https://picture-1301348863.cos.ap-nanjing.myqcloud.com/Yukino_Icon.jpeg" alt="windowBR"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="windowBR">
+            <img src="https://picture-1301348863.cos.ap-nanjing.myqcloud.com/Yukino_Icon.jpeg" alt="windowBR" alt="windowBR">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>5</div>
+        <div><span>标签</span>5</div>
+        <div><span>分类</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/donate.html" title="给我赞助">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                给我赞助
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:blog.windowbr.top" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/70939949"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/windowBR"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.luogu.com.cn/user/555090"
+			target="_blank"
+			mdui-tooltip="{content: '洛谷'}"
+			style="
+				color: rgb(20, 128, 198);
+				background-color: rgba(20, 128, 198, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-luogu"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+
+    
+        
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 windowBR
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+    
+        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
+            <img src="https://picture-1301348863.cos.ap-nanjing.myqcloud.com/server_killed.png" alt="使用 CentOS 搭建 Minecraft 服务器（已失败）" loading="lazy">
+            <h1>使用 CentOS 搭建 Minecraft 服务器（已失败）</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2022年11月18日</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <h3 id="为什么失败了还要把博客发出来：虽然由于服务器性能过低导致失败，但本文依旧有大量可供参考的内容，我边搭服务器边写的博客，在我失败的时候已经写了这么多了我不舍得直接丢掉"><a href="#为什么失败了还要把博客发出来：虽然由于服务器性能过低导致失败，但本文依旧有大量可供参考的内容，我边搭服务器边写的博客，在我失败的时候已经写了这么多了我不舍得直接丢掉" class="headerlink" title="为什么失败了还要把博客发出来：虽然由于服务器性能过低导致失败，但本文依旧有大量可供参考的内容，我边搭服务器边写的博客，在我失败的时候已经写了这么多了我不舍得直接丢掉"></a>为什么失败了还要把博客发出来：虽然由于服务器性能过低导致失败，但本文依旧有大量可供参考的内容<del>，我边搭服务器边写的博客，在我失败的时候已经写了这么多了我不舍得直接丢掉</del></h3><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>本着学习新知识的想法，本人通过教育认证的方式白嫖到了 Azure 的一台 Linux 服务器，并安装了 CentOS，<del>但由于本人并不懂 Linux 的相关操作，因此服务器至今吃灰（</del></p>
+<p>因此，由于本人一直是 Minecraft 忠实玩家，但又从来没有过使用 Linux 搭建服务端进行游戏的尝试（之前仅有尝试过使用 Windows server 搭建的经验），于是决定利用这台服务器进行 Minecraft 游戏服务器的搭建。</p>
+<p>上文已说到，本人并不熟悉 Linux 的相关操作，因此本文的操作大多数基于 <a target="_blank" rel="noopener" href="https://space.bilibili.com/1446187">新兵Sinbing</a> 的视频 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Hf4y147i3/?spm_id_from=333.999.0.0">Linux系统MC服务器开服教程</a> 进行操作。</p>
+<h2 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h2><h4 id="Linux-端相关软件安装"><a href="#Linux-端相关软件安装" class="headerlink" title="Linux 端相关软件安装"></a>Linux 端相关软件安装</h4><p>首先要进行的便是相关环境的安装，包括 <strong>JAVA 11</strong>, <strong>screen</strong>, <strong>zip&amp;unzip</strong>, <strong>wget</strong></p>
+<ol>
+<li><p><strong>JAVA 17</strong></p>
+<p><em>新兵Sinbing 使用的为 Java 8，可使用 yum 进行更简便的安装，但高版本的 Minecraft 需要更高版本的 Java，因此本文将讲述 Java 17 的安装方法</em></p>
+<p>依次执行以下指令（如果找不到目录请将第二行代码的目录名改为你的实际目录名）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz</span><br><span class="line">$ <span class="built_in">mv</span> jdk-17.0.5/ /usr/lib/jvm</span><br></pre></td></tr></table></figure>
+
+<h5 id="配置-Java-环境变量"><a href="#配置-Java-环境变量" class="headerlink" title="配置 Java 环境变量"></a>配置 Java 环境变量</h5><p>网上的教程多为让你使用 vi （Linux 自带的文本编辑器）进行文件修改，但这对小白来说过于麻烦，所以我的解决方案是直接使用 Xftp 搭配本地编辑器进行修改。</p>
+<p>首先使用 Xftp 进入 &#x2F;etc 目录下找到 profile 文件，直接右键打开，在最后加入以下代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jdk-17.0.5</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=<span class="variable">$JAVA_HOME</span>/lib:<span class="variable">$JRE_HOME</span>/lib:<span class="variable">$CLASSPATH</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$JRE_HOME</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+
+<p>如图所示</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://picture-1301348863.cos.ap-nanjing.myqcloud.com/VSC_profile.png" alt="VSC_profile" data-caption="VSC_profile" loading="lazy"></p>
+<p>然后直接保存退出即可（没有 VS code 的可以用记事本代替）</p>
+<p>返回 Xshell 刷新环境变量并验证是否安装完成</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> /etc/profile</span><br><span class="line">$ java -version</span><br></pre></td></tr></table></figure>
+
+<p>若安装正确则出现类似这样的提示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@ALinux ~]<span class="comment"># java -version</span></span><br><span class="line">java version <span class="string">&quot;17.0.5&quot;</span> 2022-10-18 LTS</span><br><span class="line">Java(TM) SE Runtime Environment (build 17.0.5+9-LTS-191)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 17.0.5+9-LTS-191, mixed mode, sharing)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>screen: 多任务后台运行</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install -y screen</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>zip&amp;unzip: 压缩&amp;解压zip</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yum install -y zip</span><br><span class="line">$ yum install -y unzip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>wget: 从 url 下载文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum  install -y wget</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="服务端下载与初始化"><a href="#服务端下载与初始化" class="headerlink" title="服务端下载与初始化"></a>服务端下载与初始化</h4><p><em>本文仅介绍原版服务端，其他服务端自己查阅相关资料</em></p>
+<p>为操作方便，本人选择在个人电脑上（Windows）进行下载及初始化</p>
+<h5 id="服务端的下载"><a href="#服务端的下载" class="headerlink" title="服务端的下载"></a>服务端的下载</h5><p>方式 1：官网下载最新版服务端</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://minecraft.net/download/server">下载 MINECRAFT ：JAVA 版的服务器</a></p>
+</blockquote>
+<p>方式 2：官方启动器下载</p>
+<blockquote>
+<p>在 <strong>配置</strong> 页面点击 <strong>新配置</strong>，便能看到服务端的下载按钮</p>
+<img onerror="imgOnError(this);" data-fancybox="gallery" src="https://picture-1301348863.cos.ap-nanjing.myqcloud.com/MC_Launcher_sever.png" alt="MC_Launcher_sever" data-caption="MC_Launcher_sever" loading="lazy">
+</blockquote>
+<h5 id="服务端初始化"><a href="#服务端初始化" class="headerlink" title="服务端初始化"></a>服务端初始化</h5><p>相信所有 Minecraft 玩家的电脑都已配置好 Java 环境，因此本文不再赘述。</p>
+<p>首先新建一个文件夹作为服务器文件夹，将下载好的服务端 jar 文件拖入，Windows 端可直接双击运行，然后等待文件加载后，可以看见名为 eula.txt 的文件，此文件为相关协议，因此需要手动同意协议方可开服，将该文件内的 <code>eula=false</code> 更改为 <code>eula=true</code> 后保存即可。</p>
+<p>再次双击 server 初次运行服务器，等待世界生成等初始化完成后，如图看见控制台出现 Done 字样即为初始化完毕</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://picture-1301348863.cos.ap-nanjing.myqcloud.com/MC_server_Done.png" alt="MC_server_Done" data-caption="MC_server_Done" loading="lazy"></p>
+<p>此时控制台输入 <code>stop</code> 即可关闭服务器</p>
+<h5 id="将服务端上传至云服务器"><a href="#将服务端上传至云服务器" class="headerlink" title="将服务端上传至云服务器"></a>将服务端上传至云服务器</h5><p><em>新兵Sinbing 使用的软件为 bitvise SSH 但由于本人更加习惯 Xshell 与 Xftp，因此采用Xshell 进行演示。</em></p>
+<ol>
+<li><p>首先自行下载软件并连接上自己的云服务器。</p>
+</li>
+<li><p>将上一步初始化完成的服务端整个文件夹打包为 zip 格式（这就不用我教了吧）</p>
+</li>
+<li><p>使用 Xftp 直接将文件拖入上传至服务器，推荐上传目录为 <code>/home/&lt;你的用户名&gt;</code> 下。</p>
+<blockquote>
+<p>不懂什么叫 <strong>目录</strong> 的小白可以认为和 Windows 下的 <strong>文件夹</strong> 差不多 </p>
+</blockquote>
+</li>
+<li><p>在 Xshell 中使用 <code>cd</code> 命令移动到服务器压缩包目录下后，使用 <code>unzip</code> 命令进行解压缩操作（ &lt;server.zip&gt; 的内容替换为自己压缩包的文件名）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ unzip &lt;server.zip&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压完成后确保自己正处在服务器文件夹下，运行以下命令启动服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ java -Xmx4096M -Xms1024M -jar &lt;server.jar&gt; nogui</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Xmx 为最大内存，Xms 为最小内存，根据自己的服务器配置进行调整</p>
+<p>&lt;server.jar&gt; 替换为自己的服务器 jar 文件</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="悲伤的故事"><a href="#悲伤的故事" class="headerlink" title="悲伤的故事"></a>悲伤的故事</h2><p><strong><del>然后本人的搭服务器计划停留在了这一步，因为服务器性能太低，进程直接被 killed 了，总之就是非常难受</del></strong></p>
+<p><img src="https://picture-1301348863.cos.ap-nanjing.myqcloud.com/server_killed.png"></p>
+<p>本文完</p>
+
+    
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>windowBR<br>
+        <strong>本文链接：</strong><a href="http://blog.windowbr.top/2022/11/18/MinecraftSever/" title="http:&#x2F;&#x2F;blog.windowbr.top&#x2F;2022&#x2F;11&#x2F;18&#x2F;MinecraftSever&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;blog.windowbr.top&#x2F;2022&#x2F;11&#x2F;18&#x2F;MinecraftSever&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Linux/" rel="tag">Linux</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Minecraft/" rel="tag">Minecraft</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A4%B1%E8%B4%A5%E4%BA%86%E8%BF%98%E8%A6%81%E6%8A%8A%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%87%BA%E6%9D%A5%EF%BC%9A%E8%99%BD%E7%84%B6%E7%94%B1%E4%BA%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E8%BF%87%E4%BD%8E%E5%AF%BC%E8%87%B4%E5%A4%B1%E8%B4%A5%EF%BC%8C%E4%BD%86%E6%9C%AC%E6%96%87%E4%BE%9D%E6%97%A7%E6%9C%89%E5%A4%A7%E9%87%8F%E5%8F%AF%E4%BE%9B%E5%8F%82%E8%80%83%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E6%88%91%E8%BE%B9%E6%90%AD%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BE%B9%E5%86%99%E7%9A%84%E5%8D%9A%E5%AE%A2%EF%BC%8C%E5%9C%A8%E6%88%91%E5%A4%B1%E8%B4%A5%E7%9A%84%E6%97%B6%E5%80%99%E5%B7%B2%E7%BB%8F%E5%86%99%E4%BA%86%E8%BF%99%E4%B9%88%E5%A4%9A%E4%BA%86%E6%88%91%E4%B8%8D%E8%88%8D%E5%BE%97%E7%9B%B4%E6%8E%A5%E4%B8%A2%E6%8E%89"><span class="toc-number">1.</span> <span class="toc-text">为什么失败了还要把博客发出来：虽然由于服务器性能过低导致失败，但本文依旧有大量可供参考的内容，我边搭服务器边写的博客，在我失败的时候已经写了这么多了我不舍得直接丢掉</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number"></span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%BC%8F%E5%BC%80%E5%A7%8B"><span class="toc-number"></span> <span class="toc-text">正式开始</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Linux-%E7%AB%AF%E7%9B%B8%E5%85%B3%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">0.1.</span> <span class="toc-text">Linux 端相关软件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-Java-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">0.1.1.</span> <span class="toc-text">配置 Java 环境变量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">0.2.</span> <span class="toc-text">服务端下载与初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E4%B8%8B%E8%BD%BD"><span class="toc-number">0.2.1.</span> <span class="toc-text">服务端的下载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">0.2.2.</span> <span class="toc-text">服务端初始化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%86%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%B8%8A%E4%BC%A0%E8%87%B3%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">0.2.3.</span> <span class="toc-text">将服务端上传至云服务器</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%82%B2%E4%BC%A4%E7%9A%84%E6%95%85%E4%BA%8B"><span class="toc-number"></span> <span class="toc-text">悲伤的故事</span></a>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="搜索"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+<script src="/lib/mdui_043tiny/mdui.js"></script>
+<script src="/lib/fancybox/fancybox.umd.js"></script>
+
+
+ 
+
+<script async src="/js/app.js?v=1668782890889"></script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
