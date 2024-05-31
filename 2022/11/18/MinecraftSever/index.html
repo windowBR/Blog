@@ -29,17 +29,17 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1717161688926">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1717164869611">
 
     <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3753360_8eszur7fvum.css">
 
-<link rel="stylesheet" href="/css/style.css?v=1717161688926">
+<link rel="stylesheet" href="/css/style.css?v=1717164869611">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1717161688926">
+        <link rel="stylesheet" href="/custom.css?v=1717164869611">
     
 
 
@@ -49,7 +49,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1717161688926"></script>
+<script async src="/js/app.js?v=1717164869611"></script>
 
  
 
@@ -65,7 +65,7 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>4</div>
+        <div><span>文章</span>5</div>
         <div><span>标签</span>5</div>
         <div><span>分类</span>2</div>
     </div>
@@ -125,7 +125,7 @@
 </div>
 
 
-	<script async src="/js/search.js?v=1717161688927"></script>
+	<script async src="/js/search.js?v=1717164869611"></script>
 
 
 
@@ -194,7 +194,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/技术/">技术</a>
-          <span class="category-list-count">1</span>
+          <span class="category-list-count">2</span>
         </li>
 
         
@@ -219,7 +219,7 @@
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">文章归档</h3>
     <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -265,31 +265,31 @@
 <h2 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h2><h4 id="Linux-端相关软件安装"><a href="#Linux-端相关软件安装" class="headerlink" title="Linux 端相关软件安装"></a>Linux 端相关软件安装</h4><p>首先要进行的便是相关环境的安装，包括 <strong>JAVA 11</strong>, <strong>screen</strong>, <strong>zip&amp;unzip</strong>, <strong>wget</strong></p>
 <ol>
 <li><p><strong>wget: 从 url 下载文件</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum  install -y wget</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ yum  install -y wget<br></code></pre></td></tr></table></figure>
 </li>
 <li><p><strong>JAVA 17</strong></p>
 <p><em>新兵Sinbing 使用的为 Java 8，可使用 yum 进行更简便的安装，但高版本的 Minecraft 需要更高版本的 Java，因此本文将讲述 Java 17 的安装方法</em></p>
 <p>依次执行以下指令（如果找不到目录请将第二行代码的目录名改为你的实际目录名）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz</span><br><span class="line">$ <span class="built_in">mv</span> jdk-17.0.5/ /usr/lib/jvm</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ wget https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz<br>$ <span class="hljs-built_in">mv</span> jdk-17.0.5/ /usr/lib/jvm<br></code></pre></td></tr></table></figure>
 
 <h5 id="配置-Java-环境变量"><a href="#配置-Java-环境变量" class="headerlink" title="配置 Java 环境变量"></a>配置 Java 环境变量</h5><p>网上的教程多为让你使用 vi （Linux 自带的文本编辑器）进行文件修改，但这对小白来说过于麻烦，所以我的解决方案是直接使用 Xftp 搭配本地编辑器进行修改。</p>
 <p>首先使用 Xftp 进入 &#x2F;etc 目录下找到 profile 文件，直接右键打开，在最后加入以下代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jdk-17.0.5</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=<span class="variable">$JAVA_HOME</span>/lib:<span class="variable">$JRE_HOME</span>/lib:<span class="variable">$CLASSPATH</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$JRE_HOME</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> JAVA_HOME=/usr/lib/jvm/jdk-17.0.5<br><span class="hljs-built_in">export</span> CLASSPATH=<span class="hljs-variable">$JAVA_HOME</span>/lib:<span class="hljs-variable">$JRE_HOME</span>/lib:<span class="hljs-variable">$CLASSPATH</span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$JAVA_HOME</span>/bin:<span class="hljs-variable">$JRE_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 
 <p>如图所示</p>
 <p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://picture-1301348863.cos.ap-nanjing.myqcloud.com/VSC_profile.png" alt="VSC_profile" data-caption="VSC_profile" loading="lazy"></p>
 <p>然后直接保存退出即可（没有 VS code 的可以用记事本代替）</p>
 <p>返回 Xshell 刷新环境变量并验证是否安装完成</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> /etc/profile</span><br><span class="line">$ java -version</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">source</span> /etc/profile<br>$ java -version<br></code></pre></td></tr></table></figure>
 
 <p>若安装正确则出现类似这样的提示</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@ALinux ~]<span class="comment"># java -version</span></span><br><span class="line">java version <span class="string">&quot;17.0.5&quot;</span> 2022-10-18 LTS</span><br><span class="line">Java(TM) SE Runtime Environment (build 17.0.5+9-LTS-191)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 17.0.5+9-LTS-191, mixed mode, sharing)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@ALinux ~]<span class="hljs-comment"># java -version</span><br>java version <span class="hljs-string">&quot;17.0.5&quot;</span> 2022-10-18 LTS<br>Java(TM) SE Runtime Environment (build 17.0.5+9-LTS-191)<br>Java HotSpot(TM) 64-Bit Server VM (build 17.0.5+9-LTS-191, mixed mode, sharing)<br></code></pre></td></tr></table></figure>
 </li>
 <li><p><strong>screen: 多任务后台运行</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install -y screen</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ yum install -y screen<br></code></pre></td></tr></table></figure>
 </li>
 <li><p><strong>zip&amp;unzip: 压缩&amp;解压zip</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yum install -y zip</span><br><span class="line">$ yum install -y unzip</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ yum install -y zip<br>$ yum install -y unzip<br></code></pre></td></tr></table></figure></li>
 </ol>
 <h4 id="服务端下载与初始化"><a href="#服务端下载与初始化" class="headerlink" title="服务端下载与初始化"></a>服务端下载与初始化</h4><p><em>本文仅介绍原版服务端，其他服务端自己查阅相关资料</em></p>
 <p>为操作方便，本人选择在个人电脑上（Windows）进行下载及初始化</p>
@@ -319,10 +319,10 @@
 </blockquote>
 </li>
 <li><p>在 Xshell 中使用 <code>cd</code> 命令移动到服务器压缩包目录下后，使用 <code>unzip</code> 命令进行解压缩操作（ &lt;server.zip&gt; 的内容替换为自己压缩包的文件名）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ unzip &lt;server.zip&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ unzip &lt;server.zip&gt;<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>解压完成后确保自己正处在服务器文件夹下，运行以下命令启动服务器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ java -Xmx4096M -Xms1024M -jar &lt;server.jar&gt; nogui</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ java -Xmx4096M -Xms1024M -jar &lt;server.jar&gt; nogui<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>Xmx 为最大内存，Xms 为最小内存，根据自己的服务器配置进行调整</p>
