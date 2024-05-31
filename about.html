@@ -22,17 +22,17 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1717159169332">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1717161688915">
 
     <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3753360_8eszur7fvum.css">
 
-<link rel="stylesheet" href="/css/style.css?v=1717159169332">
+<link rel="stylesheet" href="/css/style.css?v=1717161688915">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1717159169332">
+        <link rel="stylesheet" href="/custom.css?v=1717161688915">
     
 
 
@@ -42,10 +42,12 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1717159169332"></script>
+<script async src="/js/app.js?v=1717161688915"></script>
 
  
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 
 
 <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
@@ -116,7 +118,7 @@
 </div>
 
 
-	<script async src="/js/search.js?v=1717159169333"></script>
+	<script async src="/js/search.js?v=1717161688916"></script>
 
 
 
@@ -285,7 +287,20 @@
 
   
       <div class="nexmoe-post-footer">
-          
+          <div id="gitalk-container"></div>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'Ov23liAgjVTcvYCjmJ5l',
+    clientSecret: 'cb21d17e8033243199582901e9a00a27c0b5ef64',
+    repo: 'Blog',
+    owner: 'windowBR',
+    admin: ['windowBR'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
+</script>  
+
       </div>
   
 </div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
