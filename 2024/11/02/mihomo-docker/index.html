@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://picture-1301348863.cos.ap-nanjing.myqcloud.com/mihomo-docker04.png">
 <meta property="og:image" content="https://picture-1301348863.cos.ap-nanjing.myqcloud.com/mihomo-docker03.png">
 <meta property="article:published_time" content="2024-11-02T11:22:57.000Z">
-<meta property="article:modified_time" content="2025-01-08T09:08:41.920Z">
+<meta property="article:modified_time" content="2025-04-10T05:02:44.843Z">
 <meta property="article:author" content="windowBR">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="fnOS">
@@ -31,17 +31,17 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1739016613779">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1744261468292">
 
     <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3753360_rjak7zoyyr.css">
 
-<link rel="stylesheet" href="/css/style.css?v=1739016613779">
+<link rel="stylesheet" href="/css/style.css?v=1744261468292">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1739016613779">
+        <link rel="stylesheet" href="/custom.css?v=1744261468292">
     
 
 
@@ -51,7 +51,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1739016613779"></script>
+<script async src="/js/app.js?v=1744261468292"></script>
 
  
 
@@ -134,7 +134,7 @@
 </div>
 
 
-	<script async src="/js/search.js?v=1739016613780"></script>
+	<script async src="/js/search.js?v=1744261468293"></script>
 
 
 
@@ -273,7 +273,7 @@
 <p>所有步骤均为终端和 GUI 方式<strong>二选一</strong>进行操作，不要两个都执行一遍</p>
 <h3 id="编写-config-yaml"><a href="#编写-config-yaml" class="headerlink" title="编写 config.yaml"></a>编写 config.yaml</h3><p>新建一个文件夹命名为 <code>mihomo</code>，在其中新建文本文档 <code>config.yaml</code></p>
 <p>具体填入的内容可参考<a target="_blank" rel="noopener" href="https://windowbr.top/2024/09/17/fnos-mihomo/#%E7%BC%96%E5%86%99-config-yaml">上一篇博文</a></p>
-<h3 id="docker-compose-懒人配置"><a href="#docker-compose-懒人配置" class="headerlink" title="docker compose 懒人配置"></a>docker compose 懒人配置</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span><br><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">metacubexd:</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">metacubexd</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">ghcr.io/metacubex/metacubexd</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;9097:80&#x27;</span><br><br>  <span class="hljs-attr">mihomo:</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">mihomo</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">docker.io/metacubex/mihomo:Latest</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">pid:</span> <span class="hljs-string">host</span><br>    <span class="hljs-attr">ipc:</span> <span class="hljs-string">host</span><br>    <span class="hljs-attr">network_mode:</span> <span class="hljs-string">host</span><br>    <span class="hljs-attr">cap_add:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">ALL</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&lt;confi.yaml所在目录&gt;:/root/.config/mihomo</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/dev/net/tun:/dev/net/tun</span><br></code></pre></td></tr></table></figure>
+<h3 id="docker-compose-懒人配置"><a href="#docker-compose-懒人配置" class="headerlink" title="docker compose 懒人配置"></a>docker compose 懒人配置</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span><br><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">metacubexd:</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">metacubexd</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">ghcr.io/metacubex/metacubexd</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;9097:80&#x27;</span><br><br>  <span class="hljs-attr">mihomo:</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">mihomo</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">docker.io/metacubex/mihomo:Latest</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">pid:</span> <span class="hljs-string">host</span><br>    <span class="hljs-attr">ipc:</span> <span class="hljs-string">host</span><br>    <span class="hljs-attr">network_mode:</span> <span class="hljs-string">host</span><br>    <span class="hljs-attr">cap_add:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">ALL</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&lt;config.yaml所在目录&gt;:/root/.config/mihomo</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/dev/net/tun:/dev/net/tun</span><br></code></pre></td></tr></table></figure>
 
 <p>请自行修改<strong>config.yaml所在路径</strong>，修改后不含尖括号。</p>
 <h4 id="终端"><a href="#终端" class="headerlink" title="终端"></a>终端</h4><p>选择一个空目录作为项目目录，在其中新建 <code>docker-compose.yml</code> 文件并填入上方配置内容。</p>
